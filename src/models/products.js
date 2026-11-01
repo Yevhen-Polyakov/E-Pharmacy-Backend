@@ -35,7 +35,15 @@ const productsSchema = new Schema(
         category: {
             type: String,
             required: true,
+            enum:['Head',
+                'Leg', 
+                'Hand', 
+                'Dental Care', 
+                'Medicine', 
+                'Skin Care',
+            ],
         },
 });
     
+productsSchema.index({category: 1,});
 export const Products = model('products', productsSchema);
