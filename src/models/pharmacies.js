@@ -27,6 +27,11 @@ const pharmacySchema = new Schema({
     min: 0,
     max: 5,
   },
+
+  status:{
+    type: String,
+    enum:['open','close'],
+  }
 });
 
 export const Pharmacy = model('pharmacies', pharmacySchema);
