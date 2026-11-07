@@ -11,6 +11,7 @@ import authRoutes from './routes/authRoutes.js';
 import cookieParser from 'cookie-parser';
 import cartRoutes from './routes/cartRoutes.js';
 import checkoutRouter from './routes/checkoutRoutes.js';
+import reviews from './routes/reviewsRouters.js';
 import { errors } from 'celebrate';
 
 const app = express();
@@ -26,6 +27,7 @@ app.use(productsRoutes);
 app.use(pharmaciesRoutes);
 app.use(cartRoutes);
 app.use(checkoutRouter);
+app.use(reviews);
 
 
 app.use(notFoundHandler);
