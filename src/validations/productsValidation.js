@@ -11,7 +11,7 @@ export const getProductsSchema = {
             'Dental Care', 
             'Medicine', 
             'Skin Care',
-        ),
+        ).allow(''),
         search: Joi.string().trim().allow(""),
     }),
 };
