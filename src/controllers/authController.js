@@ -6,9 +6,11 @@ import { createSession, setSessionCookies } from '../services/auth.js';
 
 
 export const registerUser = async (req, res) => {
+    
     const {username, email, password, phone} = req.body;
 
     const existingUser = await User.findOne({email});
+   
     if(existingUser) {
         throw createHttpError(400, 'Email in use');
     }
@@ -21,11 +23,11 @@ export const registerUser = async (req, res) => {
         password: hashedPassword,
         phone,
     });
-
+    
     const newSession = await createSession(newUser._id);
 
     setSessionCookies(res, newSession);
-
+   
     res.status(201).json(newUser);
 };
 
@@ -64,6 +66,10 @@ export const logoutUser = async (req, res) => {
     res.clearCookie('refreshToken');
 
     res.status(204).send();  
+};
+
+export const getCurrentUser = async (req, res) => {
+    res.status(200).json(req.user);
 };
 
 export const refreshUserSession = async (req, res) => {
