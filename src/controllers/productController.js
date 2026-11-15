@@ -35,8 +35,8 @@ export const getMedicines = async (req, res) => {
 };
 
 export const getProductDetails = async (req,res) => {
-  const { productId } = req.params;
-  const product = await Products.findById(productId);
+  const { id } = req.params;
+  const product = await Products.findById(id);
 
   if(!product) {
     throw new createHttpError(404, 'Product not found');
