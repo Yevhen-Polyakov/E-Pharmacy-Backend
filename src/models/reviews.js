@@ -2,11 +2,6 @@ import { model, Schema } from "mongoose";
 
 const reviewsSchema = new Schema(
     {
-        id: {
-            type: String,
-            required: true,
-        },
-
         avatar:{
             type: String,
             required: true,
@@ -17,11 +12,21 @@ const reviewsSchema = new Schema(
             required: true,
         },
 
+        rating: {
+            type: Number,
+            required: true, 
+        },
+
         testimonial: {
             type: String,
             required: true,
-        }
+        },
 
-    });
+        createdAt: {
+            type: Date,
+            default: Date.now,
+        }
+    },
+    { timestamps: true });
 
     export const Reviews = model('reviews', reviewsSchema);
