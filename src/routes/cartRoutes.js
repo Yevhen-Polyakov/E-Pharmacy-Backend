@@ -7,7 +7,6 @@ import { authenticate } from "../middleware/authenticate.js";
 const router = Router();
 
 router.get('/api/cart', authenticate, getCartItems);
-
 router.post('/api/cart/addProduct', authenticate, celebrate(cartSchema), addProduct);
 router.delete('/api/cart/:orderProductId', authenticate, celebrate(cartProductIdSchema), deleteProduct);
 router.put('/api/cart/update', authenticate, celebrate(updateCartSchema), updateCart);

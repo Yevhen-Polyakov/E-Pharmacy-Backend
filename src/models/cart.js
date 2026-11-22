@@ -22,6 +22,11 @@ const cartItemSchema = new Schema({
         required: true,
     },
 
+    suppliers: {
+        type: String,
+        required: true,
+    },
+
     products: {
         type: String,
         required: true,
