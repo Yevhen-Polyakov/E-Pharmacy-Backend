@@ -46,6 +46,7 @@ export const addProduct = async (req, res) => {
             photo: product.photo,
             name: product.name,
             price: String(product.price),
+            suppliers: product.suppliers,
             products: String(quantityToAdd),
         });
     }
