@@ -59,6 +59,7 @@ const orderSchema = new Schema(
             type: String,
             enum: [
                 "Pending",
+                "Processing",
                 "Completed",
                 "Confirmed",
                 "Cancelled",
