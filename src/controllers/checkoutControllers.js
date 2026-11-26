@@ -6,6 +6,8 @@ export const checkout = async (req, res)=> {
     console.log("Content-Type:", req.headers["content-type"]);
     console.log("Body:", req.body);
     const { name, address, phone, email, payment}  = req.body;
+    console.log('Payment received:', payment);
+    console.log('Request body:', req.body);
     const userId = req.user._id;
 
     if(
