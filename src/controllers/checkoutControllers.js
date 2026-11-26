@@ -19,7 +19,7 @@ export const checkout = async (req, res)=> {
         throw createHttpError(400, 'Name, phone, address and email are required');
     }
 
-    if (!['Cash On Delivery', 'bank'].includes(payment)) {
+    if (!['Cash On Delivery', 'Bank'].includes(payment)) {
         throw createHttpError(400, 'Invalid payment method');
     }
 
