@@ -5,7 +5,7 @@ import { Order } from '../models/orders.js';
 export const checkout = async (req, res)=> {
     console.log("Content-Type:", req.headers["content-type"]);
     console.log("Body:", req.body);
-    const { name, address, phone, email}  = req.body;
+    const { name, address, phone, email, payment}  = req.body;
     const userId = req.user._id;
 
     if(
@@ -15,6 +15,10 @@ export const checkout = async (req, res)=> {
         !email?.trim()
     ) {
         throw createHttpError(400, 'Name, phone, address and email are required');
+    }
+
+    if (!['Cash On Delivery', 'bank'].includes(payment)) {
+        throw createHttpError(400, 'Invalid payment method');
     }
 
     const cart = await Cart.findOne({userId});
@@ -39,6 +43,7 @@ export const checkout = async (req, res)=> {
             photo: item.photo,
             name: name.trim(),
             phone: phone.trim(),
+            payment,
             address: address.trim(),
             email: email.trim().toLowerCase(),
             products: String(quantity),

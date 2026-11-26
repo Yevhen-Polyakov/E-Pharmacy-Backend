@@ -9,5 +9,6 @@ export const checkoutSchema = {
         .pattern(/^\+?[0-9\s()-]{7,20}$/)
         .required(),
         email: Joi.string().trim().email().required().lowercase(),
+        payment: Joi.string().valid('Cash On Delivery', 'Bank').required(),
     }),
 };
